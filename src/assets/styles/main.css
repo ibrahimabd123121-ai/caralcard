@@ -266,7 +266,7 @@ button {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
-  background-size: 44px 44px;
+  background-size: 16px 7px;
   mask-image: linear-gradient(90deg, transparent, black);
 }
 
@@ -1073,6 +1073,10 @@ button {
   .hero-panel {
     height: clamp(210px, 64vw, 290px);
     border-radius: 18px;
+  }
+
+  .hero-slide img {
+    object-position: 20% center;
   }
 
   .hero-content h1 {
