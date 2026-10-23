@@ -134,6 +134,14 @@ function openCart() {
   }
 }
 
+function openLogin() {
+  const modal = document.getElementById('loginModal')
+
+  if (modal) {
+    Modal.getOrCreateInstance(modal).show()
+  }
+}
+
 async function loadProducts() {
   loading.value = true
   error.value = false
@@ -170,6 +178,7 @@ onMounted(() => {
       :v-model:search="search"
       :cart-count="cartCount"
       @cart-click="openCart"
+      @login-click="openLogin"
       @toggle-language="toggleLanguage"
       @toggle-theme="toggleTheme"
     />
@@ -373,6 +382,34 @@ onMounted(() => {
             >
               {{ t('cart.continue') }}
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content cart-modal">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">
+              <i class="bi bi-person me-2"></i>
+              {{ t('auth.login') }}
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              :aria-label="t('cart.close')"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="login-notice">{{ t('auth.unavailable') }}</p>
           </div>
         </div>
       </div>

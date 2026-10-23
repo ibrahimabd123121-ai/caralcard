@@ -1,20 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@400;500;600;700;800;900&display=swap');
 
 :root {
+  color-scheme: dark;
   font-family: 'Inter', sans-serif;
-  color: #f7f3ea;
-  background: #07111f;
+  color: #f5f2ea;
+  background: #050505;
 
-  --bg: #191f5b;
-  --surface: #0d1b2a;
-  --surface-hover: #14263a;
-  --border: rgba(214, 173, 97, 0.16);
-  --text: #f7f3ea;
-  --muted: #a9b2c0;
-  --gold: #d6ad61;
-  --gold-light: #f2d28a;
-  --crimson: #a91f2c;
-  --crimson-bright: #c52b36;
+  --bg: #050505;
+  --surface: #100d08;
+  --surface-hover: #1a140a;
+  --border: rgb(241, 170, 3);
+  --text: #f5f2ea;
+  --muted: #b8b3a8;
+  --gold: #f5b82e;
+  --gold-light: #ffd875;
+  --gold-deep: #a86d12;
+  --gold-bright: #ff8a00;
 }
 
 * {
@@ -50,8 +51,8 @@ button {
 }
 
 ::selection {
-  background: rgba(214, 173, 97, 0.35);
-  color: rgb(207, 107, 107);
+  background: rgba(245, 184, 28, 0.927);
+  color: #f5f1e7;
 }
 
 .store-app {
@@ -59,10 +60,12 @@ button {
   min-height: 100vh;
   background:
     radial-gradient(
-      ellipse at 50% 0%,
-      rgba(169, 31, 44, 0.12),
-      transparent 48%
+      ellipse at 50% 8%,
+      rgba(245, 185, 28, 0.075),
+      transparent 42%
     ),
+    radial-gradient(ellipse at 0% 48%, rgba(154, 101, 9, 0.035), transparent 34%),
+    radial-gradient(ellipse at 100% 72%, rgba(245, 185, 28, 0.025), transparent 36%),
     var(--bg);
 }
 
@@ -72,7 +75,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(7, 17, 31, 0.92);
+  background: rgba(5, 4, 3, 0.96);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
@@ -109,15 +112,44 @@ button {
 }
 
 .navbar-nav .nav-link {
-  color: #a5a5b9;
+  position:relative;
+  display: inline-block;
+  color: #b8b3a8;
   font-size: 13px;
   font-weight: 600;
-  transition: color 0.2s;
+  transition: color 0.3s ease,text-shadow 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-  color: white;
+.navbar-nav .nav-link:active {
+  color:#ffd875;
+  text-shadow: 0 0 12px rgba(245, 185, 28, 0.5);
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position:absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    #a86d12,
+    #ffd875,
+    #f5d82e
+  );
+ transform: translateX(-50%);
+ box-shadow:
+  0 0 5px #cc9108,
+  0 0 14px rgba(232, 167, 2, 0.914),
+  0 0 24px rgba(224, 163, 10, 0.901);
+  transition: width 0.3s ease;
+  border-radius: 10px;
+}
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link:active::after {
+  width: 65%;
 }
 
 .header-actions {
@@ -136,11 +168,11 @@ button {
   font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.3s, background 0.3s;
 }
 
 .language-button:hover {
-  border-color: rgba(214, 173, 97, 0.55);
+  border-color: rgba(255, 189, 34, 0.65);
   background: var(--surface-hover);
 }
 
@@ -154,11 +186,11 @@ button {
   background: var(--surface);
   color: var(--text);
   font-size: 17px;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.3s, background 0.3s;
 }
 
 .theme-button:hover {
-  border-color: rgba(214, 173, 97, 0.55);
+  border-color: rgba(255, 189, 34, 0.65);
   background: var(--surface-hover);
 }
 
@@ -175,7 +207,7 @@ button {
   width: 220px;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: #0a1725;
+  background: #f4970b;
   color: var(--muted);
 }
 
@@ -190,15 +222,41 @@ button {
 }
 
 .header-search input::placeholder {
-  color: #73738b;
+  color: #9a907a;
 }
 
 .header-search kbd {
   font-size: 10px;
   padding: 2px 5px;
-  border: 1px solid #344256;
+  border: 1px solid rgba(245, 185, 28, 0.2);
   border-radius: 4px;
-  color: #85859b;
+  color: #aaa394;
+}
+
+.login-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid rgba(255, 216, 117, 0.65);
+  border-radius: 10px;
+  background: var(--cc-gold-gradient);
+  color: #171006;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-button:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 0 20px rgba(245, 184, 46, 0.2);
+}
+
+.login-button .bi {
+  color: inherit;
 }
 
 .cart-button {
@@ -224,8 +282,8 @@ button {
   height: 19px;
   padding: 0 4px;
   border-radius: 20px;
-  background: var(--crimson);
-  color: white;
+  background: var(--gold-deep);
+  color: #17130b;
   font-size: 10px;
   font-weight: 800;
 }
@@ -244,18 +302,18 @@ button {
 
 .hero-panel {
   position: relative;
-  height: clamp(400px, 46vw, 700px);
+  height: clamp(320px, 34vw, 500px);
   overflow: hidden;
   padding: 0;
-  border: 1px solid rgba(214, 173, 97, 0.2);
+  border: 1px solid rgba(255, 189, 34, 0.38);
   border-radius: 24px;
   background:
     radial-gradient(
       circle at 80% 45%,
-      rgba(169, 31, 44, 0.2),
+      rgba(245, 185, 28, 0.1),
       transparent 40%
     ),
-    linear-gradient(115deg, #0d1b2a 0%, #091624 55%, #1b1720 100%);
+    linear-gradient(115deg, #0e0b06 0%, #070604 55%, #130d03 100%);
 }
 
 .hero-grid {
@@ -264,8 +322,8 @@ button {
   pointer-events: none;
   opacity: 0.12;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+    linear-gradient(rgba(255, 211, 91, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 211, 91, 0.09) 1px, transparent 1px);
   background-size: 16px 7px;
   mask-image: linear-gradient(90deg, transparent, black);
 }
@@ -320,14 +378,14 @@ button {
 .section-heading h2 span,
 .promo-content h2 span {
   color: transparent;
-  background: linear-gradient(100deg, #f2d28a, #d6ad61 55%, #c52b36);
+  background: linear-gradient(100deg, #fff0a6, #ffc52e 70%, #c17a0b);
   background-clip: text;
   -webkit-background-clip: text;
 }
 
 .hero-description {
   max-width: 425px;
-  color: #a5a5bb;
+  color: #b8b1a2;
   font-size: 13px;
   line-height: 1.9;
 }
@@ -348,18 +406,18 @@ button {
   padding: 0 20px;
   border: 1px solid transparent;
   border-radius: 9px;
-  background: linear-gradient(110deg, #a91f2c, #c52b36 62%, #d6ad61);
-  color: white;
+  background: linear-gradient(110deg, #d28b0b, #ffbd22 62%, #ffe27a);
+  color: #17130b;
   font-size: 12px;
   font-weight: 700;
-  box-shadow: 0 7px 28px rgba(169, 31, 44, 0.28);
+  box-shadow: 0 7px 28px rgba(245, 185, 28, 0.24);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .btn-neon:hover {
-  color: white;
+  color: #17130b;
   transform: translateY(-2px);
-  box-shadow: 0 10px 35px rgba(197, 43, 54, 0.4);
+  box-shadow: 0 10px 35px rgba(245, 185, 28, 0.34);
 }
 
 .hero-actions .btn-outline-light {
@@ -417,9 +475,9 @@ button {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(9, 22, 36, 0.18) 0%,
-    rgba(9, 22, 36, 0.12) 35%,
-    rgba(9, 22, 36, 0.3) 100%
+    rgba(5, 4, 3, 0.18) 0%,
+    rgba(5, 4, 3, 0.12) 35%,
+    rgba(5, 4, 3, 0.3) 100%
   );
   z-index: 2;
   pointer-events: none;
@@ -444,7 +502,8 @@ button {
   width: 100%;
   height: 100%;
   object-position: center center;
-  margin-right:20px;
+  
+  
 }
 
 .hero-carousel-controls {
@@ -464,10 +523,10 @@ button {
   height: 30px;
   place-items: center;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 189, 34, 0.55);
   border-radius: 50%;
-  background: rgba(10, 23, 37, 0.88);
-  color: white;
+  background: rgba(5, 4, 3, 0.88);
+  color: #fff8e6;
   cursor: pointer;
   pointer-events: auto;
 }
@@ -517,14 +576,14 @@ button {
   position: absolute;
   width: 390px;
   height: 390px;
-  border: 1px solid rgba(214, 173, 97, 0.18);
+  border: 1px solid rgba(255, 189, 34, 0.22);
   border-radius: 50%;
 }
 
 .orbit-two {
   width: 320px;
   height: 320px;
-  border-color: rgba(197, 43, 54, 0.2);
+  border-color: rgba(255, 189, 34, 0.25);
 }
 
 .floating-card {
@@ -534,9 +593,9 @@ button {
   align-items: center;
   gap: 10px;
   padding: 12px 15px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 189, 34, 0.22);
   border-radius: 13px;
-  background: rgba(10, 23, 37, 0.92);
+  background: rgba(10, 8, 4, 0.94);
   backdrop-filter: blur(16px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
@@ -585,7 +644,7 @@ button {
 .cross-two {
   right: 12px;
   bottom: 10px;
-  color: var(--crimson-bright);
+  color: var(--gold-bright);
 }
 
 /* Trust strip */
@@ -603,7 +662,7 @@ button {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: #b7b7c9;
+  color: #b8b1a2;
   font-size: 11px;
   font-weight: 600;
 }
@@ -654,11 +713,35 @@ button {
   padding: 12px 16px;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: #0c1927;
-  color: #a7a7bd;
+  background: #0d0b07;
+  color: #aaa394;
   font-size: 11px;
   font-weight: 600;
   transition: all 0.2s;
+}
+
+.category-chip.has-image {
+  position: relative;
+  justify-content: flex-end;
+  width: 190px;
+  min-height: 100px;
+  overflow: hidden;
+  padding: 10px;
+  border-color: rgba(255, 189, 34, 0.45);
+  color: #fff8e6;
+}
+
+.category-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.category-chip.has-image:hover .category-image {
+  transform: scale(1.05);
 }
 
 .category-chip i {
@@ -667,8 +750,8 @@ button {
 
 .category-chip:hover,
 .category-chip.selected {
-  border-color: rgba(214, 173, 97, 0.58);
-  background: rgba(169, 31, 44, 0.18);
+  border-color: rgba(255, 189, 34, 0.68);
+  background: rgba(245, 185, 28, 0.12);
   color: var(--gold-light);
 }
 
@@ -679,14 +762,14 @@ button {
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 14px;
-  background: #0c1927;
+  background: #0d0b07;
   transition: transform 0.25s, border-color 0.25s,
     box-shadow 0.25s;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(214, 173, 97, 0.4);
+  border-color: rgba(255, 189, 34, 0.58);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
@@ -694,7 +777,7 @@ button {
   position: relative;
   height: 185px;
   overflow: hidden;
-  background: #102033;
+  background: #100c05;
 }
 
 .product-image-wrap::after {
@@ -702,7 +785,7 @@ button {
   position: absolute;
   inset: 40% 0 0;
   pointer-events: none;
-  background: linear-gradient(transparent, rgba(9, 9, 15, 0.38));
+  background: linear-gradient(transparent, rgba(5, 4, 3, 0.5));
 }
 
 .product-image {
@@ -730,24 +813,24 @@ button {
 
 .product-badge {
   left: 12px;
-  background: var(--crimson);
-  color: white;
+  background: var(--gold-deep);
+  color: #17130b;
 }
 
 .badge-sale {
-  background: #a91f2c;
+  background: #c17a0b;
 }
 
 .badge-new {
-  background: #8f7136;
+  background: #9a6509;
 }
 
 .badge-bestseller {
-  background: #8f7136;
+  background: #9a6509;
 }
 
 .badge-popular {
-  background: #a91f2c;
+  background: #c17a0b;
 }
 
 .product-region {
@@ -755,8 +838,8 @@ button {
   display: flex;
   align-items: center;
   gap: 5px;
-  background: rgba(10, 10, 17, 0.8);
-  color: #f7f3ea;
+  background: rgba(5, 4, 3, 0.84);
+  color: #f5f1e7;
   backdrop-filter: blur(10px);
 }
 
@@ -769,10 +852,10 @@ button {
   place-items: center;
   width: 34px;
   height: 34px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 189, 34, 0.45);
   border-radius: 9px;
-  background: rgba(169, 31, 44, 0.96);
-  color: white;
+  background: rgba(255, 189, 34, 0.96);
+  color: #17130b;
   opacity: 0;
   transform: translateY(5px);
   transition: all 0.2s;
@@ -829,7 +912,7 @@ button {
 }
 
 .product-price del {
-  color: #77778b;
+  color: #9a907a;
   font-size: 10px;
 }
 
@@ -838,9 +921,9 @@ button {
   align-items: center;
   gap: 6px;
   padding: 8px 10px;
-  border: 1px solid rgba(214, 173, 97, 0.35);
+  border: 1px solid rgba(255, 189, 34, 0.42);
   border-radius: 7px;
-  background: rgba(169, 31, 44, 0.12);
+  background: rgba(245, 185, 28, 0.1);
   color: var(--gold-light);
   font-size: 10px;
   font-weight: 700;
@@ -848,8 +931,8 @@ button {
 }
 
 .add-button:hover {
-  background: var(--crimson);
-  color: white;
+  background: var(--gold);
+  color: #17130b;
 }
 
 /* Loading and empty states */
@@ -878,15 +961,15 @@ button {
   overflow: hidden;
   margin: 80px 0;
   padding: 45px;
-  border: 1px solid rgba(214, 173, 97, 0.25);
+  border: 1px solid rgba(255, 189, 34, 0.32);
   border-radius: 20px;
   background:
     radial-gradient(
       circle at 85% 50%,
-      rgba(169, 31, 44, 0.22),
+      rgba(245, 185, 28, 0.1),
       transparent 35%
     ),
-    linear-gradient(110deg, #121c29, #0c1927);
+    linear-gradient(110deg, #0e0b06, #080604);
 }
 
 .promo-content {
@@ -896,7 +979,7 @@ button {
 
 .promo-content p {
   margin: 13px 0 22px;
-  color: #aaa9bf;
+  color: #b8b1a2;
   font-size: 12px;
   line-height: 1.8;
 }
@@ -904,7 +987,7 @@ button {
 .promo-decoration {
   position: absolute;
   right: 8%;
-  color: rgba(214, 173, 97, 0.16);
+  color: rgba(245, 185, 28, 0.16);
   font-size: 190px;
   transform: rotate(-15deg);
 }
@@ -913,7 +996,7 @@ button {
 
 .site-footer {
   border-top: 1px solid var(--border);
-  background: #050d17;
+  background: #050403;
 }
 
 .footer-content {
@@ -935,21 +1018,21 @@ button {
 .footer-content p span {
   display: block;
   margin-top: 5px;
-  color: #7f7f96;
+  color: #9a907a;
   font-size: 10px;
 }
 
 .copyright {
-  color: #7f7f96;
+  color: #9a907a;
   font-size: 10px;
 }
 
 /* Demo cart */
 
 .cart-modal {
-  border: 1px solid #344256;
+  border: 1px solid rgba(255, 189, 34, 0.28);
   border-radius: 16px;
-  background: #0d1b2a;
+  background: #0d0b07;
   color: white;
 }
 
@@ -1071,8 +1154,7 @@ button {
   }
 
   .hero-panel {
-    height: clamp(210px, 64vw, 290px);
-    border-radius: 18px;
+    height: clamp(180px, 50vw, 240px);
   }
 
   .hero-slide img {
@@ -1260,6 +1342,12 @@ button {
   text-align: left !important;
 }
 
+.login-notice {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 @media (max-width: 991.98px) {
   [dir='rtl'] .floating-card-bottom {
     right: -5px;
@@ -1295,12 +1383,16 @@ button {
 
 :root[data-theme='light'] {
   color-scheme: light;
-  --bg: #e8ebf0;
-  --surface: #f1f2f5;
-  --surface-hover: #e5e8ed;
-  --border: rgba(31, 42, 58, 0.16);
-  --text: #202a3a;
-  --muted: #657084;
+  --bg: #f4f0e7;
+  --surface: #fffdf8;
+  --surface-hover: #eee7d8;
+  --border: rgba(128, 96, 38, 0.2);
+  --text: #29251d;
+  --muted: #746b5b;
+  --gold: #a98235;
+  --gold-light: #f2d28a;
+  --gold-deep: #a98235;
+  --gold-bright: #d6ad61;
 }
 
 :root[data-theme='light'] body {
@@ -1310,12 +1402,14 @@ button {
 
 :root[data-theme='light'] .store-app {
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(169, 31, 44, 0.06), transparent 48%),
+    radial-gradient(ellipse at 50% 8%, rgba(169, 130, 53, 0.1), transparent 42%),
+    radial-gradient(ellipse at 0% 48%, rgba(169, 130, 53, 0.035), transparent 34%),
+    radial-gradient(ellipse at 100% 72%, rgba(214, 173, 97, 0.03), transparent 36%),
     var(--bg);
 }
 
 :root[data-theme='light'] .site-header {
-  background: rgba(236, 238, 242, 0.96);
+  background: rgba(249, 246, 238, 0.96);
 }
 
 :root[data-theme='light'] .brand-logo,
@@ -1330,22 +1424,22 @@ button {
 }
 
 :root[data-theme='light'] .navbar-nav .nav-link {
-  color: #657084;
+  color: #746b5b;
 }
 
 :root[data-theme='light'] .header-search {
-  background: #e4e7ec;
+  background: #eee9de;
 }
 
 :root[data-theme='light'] .header-search kbd {
-  border-color: #d2d8e2;
-  color: #657084;
+  border-color: #d9cfbb;
+  color: #746b5b;
 }
 
 :root[data-theme='light'] .hero-panel {
   background:
-    radial-gradient(circle at 80% 45%, rgba(169, 31, 44, 0.1), transparent 40%),
-    linear-gradient(115deg, #f0f1f4 0%, #e7e9ee 55%, #eae4e6 100%);
+    radial-gradient(circle at 80% 45%, rgba(169, 130, 53, 0.12), transparent 40%),
+    linear-gradient(115deg, #f5f0e5 0%, #ece5d7 55%, #f0e7d4 100%);
 }
 
 :root[data-theme='light'] .hero-grid {
@@ -1354,79 +1448,79 @@ button {
 
 :root[data-theme='light'] .hero-description,
 :root[data-theme='light'] .promo-content p {
-  color: #596579;
+  color: #665d4e;
 }
 
 :root[data-theme='light'] .hero-actions .btn-outline-light,
 :root[data-theme='light'] .state-message .btn-outline-light {
-  border-color: rgba(31, 42, 58, 0.22);
+  border-color: rgba(80, 65, 39, 0.25);
   color: var(--text);
 }
 
 :root[data-theme='light'] .hero-stats span,
 :root[data-theme='light'] .trust-strip > div {
-  color: #596579;
+  color: #665d4e;
 }
 
 :root[data-theme='light'] .floating-card {
-  border-color: rgba(31, 42, 58, 0.12);
-  background: rgba(239, 241, 244, 0.96);
+  border-color: rgba(80, 65, 39, 0.15);
+  background: rgba(255, 253, 248, 0.96);
   color: var(--text);
 }
 
 :root[data-theme='light'] .category-chip,
 :root[data-theme='light'] .product-card {
-  background: #f0f1f4;
+  background: #fffdf8;
   color: var(--text);
 }
 
 :root[data-theme='light'] .category-chip {
-  color: #596579;
+  color: #665d4e;
 }
 
 :root[data-theme='light'] .category-chip:hover,
 :root[data-theme='light'] .category-chip.selected {
-  background: rgba(169, 31, 44, 0.08);
-  color: #8e1924;
+  background: rgba(169, 130, 53, 0.12);
+  color: #806126;
 }
 
 :root[data-theme='light'] .product-card:hover {
-  box-shadow: 0 15px 40px rgba(31, 42, 58, 0.12);
+  box-shadow: 0 15px 40px rgba(55, 43, 22, 0.12);
 }
 
 :root[data-theme='light'] .product-image-wrap {
-  background: #dfe3e9;
+  background: #e9e1d1;
 }
 
 :root[data-theme='light'] .product-subtitle,
 :root[data-theme='light'] .section-note,
 :root[data-theme='light'] .state-message {
-  color: #657084;
+  color: #746b5b;
 }
 
 :root[data-theme='light'] .add-button {
-  background: rgba(169, 31, 44, 0.06);
-  color: #8e1924;
+  background: rgba(169, 130, 53, 0.08);
+  color: #806126;
 }
 
 :root[data-theme='light'] .promo-banner {
   background:
-    radial-gradient(circle at 85% 50%, rgba(169, 31, 44, 0.1), transparent 35%),
-    linear-gradient(110deg, #f0f1f4, #e3e6eb);
+    radial-gradient(circle at 85% 50%, rgba(169, 130, 53, 0.12), transparent 35%),
+    linear-gradient(110deg, #f5f0e5, #e9e1d1);
 }
 
 :root[data-theme='light'] .site-footer {
-  background: #dfe3e9;
+  background: #e9e1d1;
 }
 
 :root[data-theme='light'] .footer-content p span,
 :root[data-theme='light'] .copyright {
-  color: #657084;
+  color: #746b5b;
 }
 
 :root[data-theme='light'] .cart-modal {
-  border-color: #cbd1db;
-  background: #f0f1f4;
+  border-color: #d9cfbb;
+  background: #fffdf8;
   color: var(--text);
 }
 
@@ -1435,5 +1529,481 @@ button {
 }
 
 :root[data-theme='light'] .spinner-border.text-light {
-  color: var(--crimson) !important;
+  color: var(--gold) !important;
+}
+
+/* =========================================================
+   CARLACARD — Black & Gold theme overrides
+   Appended to preserve the existing Vue layout and components
+   ========================================================= */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #050505;
+  --surface: #0d0b07;
+  --surface-hover: #181207;
+  --border: rgba(245, 184, 46, 0.28);
+  --text: #f5f2ea;
+  --muted: #b8b3a8;
+  --gold: #f5b82e;
+  --gold-light: #ffd875;
+  --gold-deep: #a86d12;
+  --gold-bright: #ff8a00;
+
+  --cc-black: #050505;
+  --cc-black-soft: #090806;
+  --cc-panel: #100d08;
+  --cc-panel-raised: #17120a;
+  --cc-gold-gradient: linear-gradient(
+    115deg,
+    #ffe49a 0%,
+    #f5b82e 48%,
+    #c77a12 100%
+  );
+  --cc-gold-glow: 0 0 24px rgba(245, 184, 46, 0.14);
+}
+
+html {
+  background: var(--cc-black);
+  color-scheme: dark;
+  scroll-padding-top: 88px;
+}
+
+body {
+  background: var(--cc-black);
+  color: var(--text);
+  font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+::selection {
+  background: rgba(245, 184, 46, 0.38);
+  color: #fffaf0;
+}
+
+.store-app {
+  background:
+    radial-gradient(ellipse at 50% -8%, rgba(245, 184, 46, 0.075), transparent 43%),
+    radial-gradient(ellipse at 0% 45%, rgba(168, 109, 18, 0.045), transparent 34%),
+    radial-gradient(ellipse at 100% 78%, rgba(255, 138, 0, 0.025), transparent 36%),
+    var(--cc-black);
+}
+
+/* Navbar / header */
+.site-header {
+  background: rgba(5, 5, 5, 0.94);
+  border-bottom: 1px solid rgba(245, 184, 46, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+.site-header .navbar {
+  min-height: 78px;
+}
+
+.brand-logo,
+.brand-logo:hover {
+  color: #fffaf0;
+}
+
+.brand-logo {
+  letter-spacing: -0.8px;
+  text-shadow: 0 0 18px rgba(245, 184, 46, 0.08);
+}
+
+.brand-mark {
+  border: 1px solid rgba(245, 184, 46, 0.25);
+  box-shadow: 0 0 18px rgba(245, 184, 46, 0.1);
+}
+
+.brand-dot {
+  color: var(--gold);
+}
+
+.navbar-nav .nav-link {
+  color: #b8b3a8;
+  padding: 0.7rem 0.85rem;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--gold-light);
+}
+
+.language-button,
+.theme-button,
+.cart-button,
+.custom-toggler {
+  background-color: #0d0b07;
+  border-color: rgba(245, 184, 46, 0.25);
+  color: var(--text);
+}
+
+.language-button:hover,
+.theme-button:hover,
+.cart-button:hover,
+.custom-toggler:hover {
+  background-color: #181207;
+  border-color: rgba(245, 184, 46, 0.62);
+  color: var(--gold-light);
+}
+
+.header-search {
+  background: #090806;
+  border-color: rgba(245, 184, 46, 0.24);
+}
+
+.header-search:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(245, 184, 46, 0.08);
+}
+
+.header-search input {
+  color: var(--text);
+}
+
+.header-search input::placeholder {
+  color: #8f8778;
+}
+
+.header-search kbd {
+  border-color: rgba(245, 184, 46, 0.2);
+  color: var(--muted);
+}
+
+.cart-count {
+  background: var(--gold-gradient);
+  color: #171006;
+}
+
+.navbar-toggler,
+.navbar-toggler:focus {
+  border-color: rgb(215, 154, 10);
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  filter: sepia(3) saturate(4) brightness(1.5);
+}
+
+/* Hero panel */
+.hero-panel {
+  border-color: rgba(245, 184, 46, 0.28);
+  background:
+    radial-gradient(ellipse at 78% 48%, rgba(168, 109, 18, 0.13), transparent 42%),
+    radial-gradient(ellipse at 8% 65%, rgba(245, 184, 46, 0.055), transparent 38%),
+    linear-gradient(115deg, #0c0a06 0%, #080705 55%, #130d06 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 232, 169, 0.035);
+}
+
+.hero-grid {
+  opacity: 0.08;
+  background-image:
+    linear-gradient(rgba(255, 211, 91, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 211, 91, 0.09) 1px, transparent 1px);
+}
+
+.eyebrow,
+.section-kicker {
+  color: var(--gold-light);
+}
+
+.live-dot {
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(245, 184, 46, 0.72);
+}
+
+.hero-content h1 span,
+.section-heading h2 span,
+.promo-content h2 span {
+  background-image: linear-gradient(100deg, #fff0b0 0%, #ffd875 38%, #f5b82e 72%, #b87512 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.hero-description {
+  color: #b8b3a8;
+}
+
+.btn-neon {
+  background: var(--cc-gold-gradient);
+  border-color: rgba(255, 216, 117, 0.75);
+  color: #171006;
+  box-shadow: 0 7px 28px rgba(245, 184, 46, 0.18);
+}
+
+.btn-neon:hover,
+.btn-neon:focus-visible {
+  color: #100b03;
+  filter: brightness(1.07);
+  box-shadow: 0 10px 34px rgba(245, 184, 46, 0.27);
+}
+
+.hero-actions .btn-outline-light {
+  color: #f5f2ea;
+  border-color: rgba(245, 184, 46, 0.28);
+  background: rgba(10, 8, 5, 0.36);
+}
+
+.hero-actions .btn-outline-light:hover {
+  color: var(--gold-light);
+  border-color: rgba(245, 184, 46, 0.65);
+  background: rgba(245, 184, 46, 0.06);
+}
+
+.hero-stats strong {
+  color: #fffaf0;
+}
+
+.hero-stats span {
+  color: var(--muted);
+}
+
+.hero-image-frame::after {
+  background: linear-gradient(
+    90deg,
+    rgba(5, 5, 5, 0.08) 0%,
+    rgba(5, 5, 5, 0.04) 42%,
+    rgba(5, 5, 5, 0.28) 100%
+  );
+}
+
+.hero-carousel-controls button {
+  border-color: rgba(245, 184, 46, 0.5);
+  background: rgba(5, 5, 5, 0.86);
+  color: #fff5d9;
+}
+
+.hero-carousel-controls button:hover {
+  border-color: var(--gold-light);
+  background: #171006;
+  color: var(--gold-light);
+}
+
+.hero-carousel-controls .hero-carousel-dot.is-active {
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(245, 184, 46, 0.45);
+}
+
+/* Shared panels, cards and sections */
+.product-card,
+.category-card,
+.promo-card,
+.feature-card {
+  background-color: var(--cc-panel);
+  border-color: rgba(245, 184, 46, 0.2);
+}
+
+.product-card:hover,
+.category-card:hover,
+.promo-card:hover,
+.feature-card:hover {
+  border-color: rgba(245, 184, 46, 0.58);
+  box-shadow: var(--cc-gold-glow);
+}
+
+.section-heading h2,
+.promo-content h2 {
+  color: #fffaf0;
+}
+
+.product-price,
+.price,
+.text-gold {
+  color: var(--gold-light);
+}
+
+.section-kicker,
+.product-category,
+.product-badge {
+  color: var(--gold-light);
+}
+
+/* Buttons across the store */
+.btn-primary,
+.btn-gold,
+button.btn-primary {
+  background: var(--cc-gold-gradient);
+  border-color: #e7b84b;
+  color: #171006;
+  font-weight: 700;
+}
+
+.btn-primary:hover,
+.btn-gold:hover,
+button.btn-primary:hover {
+  background: linear-gradient(115deg, #ffedb5, #ffd875 48%, #e59b25);
+  border-color: #ffe49a;
+  color: #100b03;
+  box-shadow: 0 0 22px rgba(245, 184, 46, 0.22);
+}
+
+.btn-outline-gold {
+  color: var(--gold-light);
+  border: 1px solid rgba(245, 184, 46, 0.42);
+  background: transparent;
+}
+
+.btn-outline-gold:hover {
+  color: #fff3d1;
+  border-color: var(--gold);
+  background: rgba(245, 184, 46, 0.08);
+}
+
+/* Forms and search */
+input,
+textarea,
+select,
+.form-control,
+.form-select {
+  color: var(--text);
+  background-color: #0b0906;
+  border-color: rgba(245, 184, 46, 0.24);
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+.form-control:focus,
+.form-select:focus {
+  color: var(--text);
+  background-color: #0b0906;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 0.2rem rgba(245, 184, 46, 0.12);
+}
+
+input::placeholder,
+textarea::placeholder,
+.form-control::placeholder {
+  color: #8f8778;
+}
+
+.form-check-input:checked {
+  background-color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* Dropdowns, modals and cart */
+.dropdown-menu,
+.modal-content,
+.offcanvas {
+  color: var(--text);
+  background-color: #0d0b07;
+  border: 1px solid rgba(245, 184, 46, 0.24);
+}
+
+.dropdown-item {
+  color: var(--text);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: var(--gold-light);
+  background-color: rgba(245, 184, 46, 0.08);
+}
+
+.modal-header,
+.modal-footer {
+  border-color: rgba(245, 184, 46, 0.18);
+}
+
+.btn-close {
+  filter: invert(1) sepia(1) saturate(2);
+}
+
+/* Footer and separators */
+footer,
+.site-footer {
+  background: #070605;
+  border-top-color: rgba(245, 184, 46, 0.18);
+}
+
+hr,
+.section-divider {
+  border-color: rgba(245, 184, 46, 0.2);
+}
+
+/* Keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+/* Responsive navbar and hero polish */
+@media (max-width: 991.98px) {
+  .site-header .navbar {
+    min-height: 70px;
+  }
+
+  .navbar-collapse {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(9, 8, 6, 0.98);
+    border: 1px solid rgba(245, 184, 46, 0.18);
+    border-radius: 12px;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.75rem 0.65rem;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-panel {
+    border-radius: 17px;
+  }
+
+  .hero-content h1 {
+    letter-spacing: -1.5px;
+  }
+
+  .hero-stats {
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+}
+
+.store-app .bi {
+  color: var(--gold);
+}
+
+.store-app .promo-decoration .bi {
+  color: rgba(245, 184, 28, 0.914);
+}
+
+.store-app .btn-neon .bi,
+.store-app .btn-primary .bi,
+.store-app .btn-gold .bi,
+.store-app .quick-add .bi,
+.store-app .add-button:hover .bi {
+  color: rgba(248, 178, 0, 0.914);
 }

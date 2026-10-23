@@ -20,7 +20,7 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['update:search', 'cart-click', 'toggle-language', 'toggle-theme'])
+const emit = defineEmits(['update:search', 'cart-click', 'login-click', 'toggle-language', 'toggle-theme'])
 const t = (key) => translate(props.locale, key)
 </script>
 
@@ -69,6 +69,15 @@ const t = (key) => translate(props.locale, key)
               />
               <kbd>/</kbd>
             </label>
+
+            <button
+              class="login-button"
+              type="button"
+              @click="emit('login-click')"
+            >
+              <i class="bi bi-person"></i>
+              {{ t('auth.login') }}
+            </button>
 
             <button
               class="language-button"
