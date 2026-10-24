@@ -18,6 +18,10 @@ const heroSlides = [
     image: `${import.meta.env.BASE_URL}images/heroimg/slide-2.jpg`,
     copy: 'hero.slide.giftCards',
   },
+  {
+   image: `${import.meta.env.BASE_URL}images/heroimg/slide-3.jpg`,
+    copy: 'hero.slide.giftCards',
+  },
 ]
 const activeSlide = ref(0)
 let carouselTimer
