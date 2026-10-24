@@ -22,7 +22,12 @@
   box-sizing: border-box;
 }
 
-html {
+html,body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 0;
+  box-sizing: border-box;
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
 }
@@ -1184,10 +1189,20 @@ button {
 @media (max-width: 768.98px) {
 
   .container, .header, .section{
+
     width:100%;
     max-width:100%;
     box-sizing:border-box;
   }
+  .container, .row, .section{
+    width:100%;
+    max-width:100%;
+    margin-left:0;
+    margin-right:0;
+    padding-left:12px;
+    padding-right:12px;
+
+  } 
   .hero-section {
     padding-top: 16px;
   }
@@ -1424,6 +1439,7 @@ button {
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -2024,6 +2040,7 @@ textarea:focus-visible {
 }
 
 @media (max-width: 767.98px) {
+
   .hero-panel {
     border-radius: 17px;
   }
