@@ -1139,6 +1139,11 @@ button {
 /* Responsive */
 
 @media (max-width: 991.98px) {
+  .container, .header, .section{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+  }
   .site-header .navbar {
     min-height: 72px;
   }
@@ -1392,7 +1397,7 @@ button {
   }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 768.98px) {
   [dir='rtl'] .floating-card-top {
     right: auto;
     left: 0;
