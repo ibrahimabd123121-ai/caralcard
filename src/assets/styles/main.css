@@ -1192,6 +1192,10 @@ button {
 }
 
 @media (max-width: 768.98px) {
+  store-app {
+    width: 100%;
+    max-width: 100%;
+  }
 
   .container, .header, .section{
 
