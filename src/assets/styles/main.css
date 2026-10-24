@@ -1139,11 +1139,8 @@ button {
 /* Responsive */
 
 @media (max-width: 991.98px) {
-  .container, .header, .section{
-    width:100%;
-    max-width:100%;
-    box-sizing:border-box;
-  }
+  
+  
   .site-header .navbar {
     min-height: 72px;
   }
@@ -1185,6 +1182,12 @@ button {
 }
 
 @media (max-width: 768.98px) {
+
+  .container, .header, .section{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+  }
   .hero-section {
     padding-top: 16px;
   }
