@@ -29,7 +29,7 @@ html {
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 500px;
   background: var(--bg);
   color: var(--text);
   font-family: 'Inter', sans-serif;
@@ -686,8 +686,8 @@ button {
 .categories-section,
 .products-section {
   padding-top: 65px;
-  padding-right: 45px;
-  padding-left: 45px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 .section-heading {
