@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
 import { Modal } from 'bootstrap'
+import { useRoute } from 'vue-router'
 
 import AppHeader from './components/AppHeader.vue'
 import HeroSection from './components/HeroSection.vue'
@@ -13,6 +14,8 @@ import { translate, translateProductText } from './i18n'
 const products = ref([])
 const loading = ref(true)
 const error = ref(false)
+const route = useRoute()
+const isAdminRoute = computed(() => route.path.startsWith('/admin'))
 const locale = ref('en')
 const theme = ref('dark')
 
@@ -41,6 +44,16 @@ watch(
       console.error('Unable to save theme preference.', storageError)
     }
   },
+)
+
+watch(
+  isAdminRoute,
+  (value) => {
+    document.title = value
+      ? 'Admin Dashboard | Carlacard'
+      : 'Market Games - Digital Marketplace'
+  },
+  { immediate: true },
 )
 
 const cartCount = computed(() =>
@@ -166,12 +179,15 @@ onMounted(() => {
   }
 
   document.documentElement.dataset.theme = theme.value
-  loadProducts()
+  if (!isAdminRoute.value) {
+    loadProducts()
+  }
 })
 </script>
 
 <template>
-  <div class="store-app">
+  <RouterView v-if="isAdminRoute" />
+  <div v-else class="store-app">
     <AppHeader
       :locale="locale"
       :theme="theme"

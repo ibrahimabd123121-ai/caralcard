@@ -36,3 +36,7 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## Admin preview
+
+Open `/admin` to view the admin sign-in screen and dashboard preview. The form is UI-only: it does not authenticate users or connect to a backend.

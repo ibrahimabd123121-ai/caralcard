@@ -1,4 +1,6 @@
 <script setup>
+import { translate } from '../i18n'
+
 defineProps({
   locale: {
     type: String,
@@ -27,7 +29,10 @@ const emit = defineEmits(['select'])
     }"
     @click="emit('select')"
   >
-    <img v-if="category.image" class="category-image" :src="category.image" alt="" />
-    <i v-else :class="`bi ${category.icon}`"></i>
+    <span class="category-image-wrap">
+      <img v-if="category.image" class="category-image" :src="category.image" alt="" />
+      <i v-else :class="`bi ${category.icon}`"></i>
+    </span>
+    <span class="category-name">{{ translate(locale, `category.${category.name}`) }}</span>
   </button>
 </template>
