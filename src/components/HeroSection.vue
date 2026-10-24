@@ -19,8 +19,7 @@ const heroSlides = [
     copy: 'hero.slide.giftCards',
   },
   {
-    image: 'dist/images/heroimg/slide-3.png',
-    copy: 'hero.slide.googlePlay',
+   
   },
 ]
 const activeSlide = ref(0)
