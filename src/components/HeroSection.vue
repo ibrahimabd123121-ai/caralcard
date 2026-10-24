@@ -11,11 +11,11 @@ defineProps({
 
 const heroSlides = [
   {
-    image: `src/images/heroimg/slide-1.jpg`,
+    image: `${import.meta.env.BASE_URL}src/images/heroimg/slide-1.jpg`,
     copy: 'hero.slide.gaming',
   },
   {
-    image: 'src/images/heroimg/slide-2.jpg',
+    image: `${import.meta.env.BASE_URL}src/images/heroimg/slide-2.jpg`,
     copy: 'hero.slide.giftCards',
   },
 ]
