@@ -1138,7 +1138,7 @@ button {
 
 /* Responsive */
 
-@media (max-width: 991.98px) {
+@media (max-width: 960.98px) {
   .site-header .navbar {
     min-height: 72px;
   }
